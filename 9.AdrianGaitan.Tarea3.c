@@ -21,37 +21,52 @@
 #include <stdio.h>
 
 // Las funciones se declaran antes de ser usadas. Esto es para que el compilador sepa que existen.
-int Factorial(int n);                    // Esta función calcula el factorial de un número n.
-double Combinator(int n, int k);         // Esta función calcula el coeficiente binomial de n y k.
-int Complementor(int n, int x, int acc); // Esta función calcula la suma de los coeficientes binomiales de n y k.
-int bellNumber(int n);                   // Esta función calcula el número de Bell de n.
-void printBellNumbers(int n);            // Esta función imprime los números de Bell de 0 a n.
+int factorial(int enesimo);                    // Esta función calcula el factorial de un número n.
+double combinatoria(int enesimo, int k);         // Esta función calcula el coeficiente binomial de n y k.
+int complementoBell(int enesimo, int k, int acc); // Esta función calcula la suma de los coeficientes binomiales de n y k.
+int numeroBell(int n);                   // Esta función calcula el número de Bell de n.
+void imprimirNumeroBell(int n);            // Esta función imprime los números de Bell de 0 a n.
 
-int Factorial(int n){
-    return (n == 0) ? 1 : n * Factorial(n - 1);
+/*
+{   //Ejemplo de Bell 3
+    3 // B(3) = 5
+    {
+        2 // n - 1
+        0 // k
+    }//Combinatoria == 2!/0!(2-0)!= 1 * b(0)= 1 * 1 = 1
+    {
+        2
+        1
+    }//Combinatoria == 2!/1!(2-1)!= 2 * b(1)= 2 * 1 = 2
+    {
+        2
+        2
+    }//Combinatoria == 2!/2!(2-2)!= 1 * b(2)= 1 * 2 = 2
 }
+*/
 
-double Combinator(int n, int k){
-    return Factorial(n) / (Factorial(k) * Factorial(n - k));
-}
+int factorial(int n){
+    return (n == 0) ? 1 : n * factorial(n - 1);
+}// Esta función calcula el factorial de un número n.
 
-int Complementor(int n, int x, int acc){
-    return (x == n) ? acc : 
-                    Complementor(n, x + 1, acc + Combinator(n - 1, x) * bellNumber(x));
-}
+double combinatoria(int n, int k){
+    return factorial(n) / (factorial(k) * factorial(n - k));
+}//Combinatoria == n!/(k!(n-k)!)
 
-int bellNumber(int n){
+int complementoBell(int n, int k, int acc){
+    return (k == n) ? acc : 
+                    complementoBell(n, k + 1, acc + combinatoria(n - 1, k) * numeroBell(k));
+}// Esta función calcula la suma de los coeficientes binomiales de n y k.
+// Esta función calcula el número de Bell de n.
+
+int numeroBell(int n){
     return (n <= 1) ? 1 :
-                    Complementor(n, 0, 0);
-}
+                    complementoBell(n, 0, 0);
+}//
 
-void printBellNumbers(int n){
-    if (n == 0) {
-        printf("%d", bellNumber(n));
-    } else {
-        printBellNumbers(n - 1);
-        printf(", %d", bellNumber(n));
-    }
+void imprimirNumeroBell(int n){
+    n == 0 ? printf("%d", numeroBell(n)) : (imprimirNumeroBell(n - 1), printf(", %d", numeroBell(n)));
+    // Esta función imprime los números de Bell de 0 a n.
 }
 
 int main()
@@ -60,6 +75,6 @@ int main()
     printf("Este programa va imprimir los términos que le solicites de la serie de Bell: \nEsta serie cuenta el número de particiones no vacías de un conjunto de n elementos. \nComienza con los números 1, 1 y los siguientes términos se calculan como la suma de \nlos términos anteriores multiplicados por los números naturales consecutivos.\nIngrese a continuación el número de términos deseados:\n");
     scanf("%d", &n);
     printf("Los primeros %d términos de la serie de Bell son: ", n);
-    printBellNumbers(n);
+    imprimirNumeroBell(n);
     return 0;
 }
