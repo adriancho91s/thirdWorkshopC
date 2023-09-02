@@ -25,16 +25,18 @@ El prototipo de la función fibonacci es:
 */
 
 int fibonacci (int primerValor, int segundoValor) {
-    if (primerValor > 10000) {
+    if (segundoValor > 10000) {
+        printf("\x1b[31m%i.\x1b[0m", primerValor);
         return 0;
     }
-    printf("%i ", primerValor);
+    printf("\x1b[31m%i,\x1b[0m ", primerValor);
     fibonacci(segundoValor, (segundoValor + primerValor));
+    return 0;
 }
 
 //Función Principal
 int main () {
-    printf("Serie de fibonacci hasta el número 10000: \n");
+    printf("Este programa presenta la serie de Fibonacci como la serie que comienza con los dígitos 1 y 0 y va\nsumando progresivamente los dos últimos elementos de la serie, así: 0 1 1 2 3 5 8 13 21 34...\nPara este programa, se presentará la serie de Fibonacci hasta llegar sin sobrepasar el número 10,000.\n");
     fibonacci(0, 1);
     return 0;
 }

@@ -29,16 +29,18 @@ Prototipo de la función fibonacci:
 
 int fibonacci (int primerValor, int segundoValor, int suma) {
     if (segundoValor > 100) {
-        printf("la sumaa es: %i", suma);
+        printf("\x1b[31m%i \x1b[0m", primerValor);
+        printf("\x1b[31my su suma es: %i.\x1b[0m", suma);
         return 0;
     }
-    printf("%i ", primerValor);
+    printf("\x1b[31m%i,\x1b[0m ", primerValor);
     fibonacci(segundoValor, (segundoValor + primerValor), (suma + segundoValor));
+    return 0;
 }
 
 //Función Principal
 int main () {
-printf("Este programa presenta la sumaa de los elementos de la serie de Fibonacci entre 0 y 100.\nLos números a sumaar son:");
+printf("Este programa presenta la suma de los elementos de la serie de Fibonacci entre 0 y 100.\nLos números a sumar son: ");
     fibonacci(0, 1, 0);//Llamado a la función fibonacci con los valores iniciales
     return 0;
 }
