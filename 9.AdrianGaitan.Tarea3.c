@@ -1,6 +1,6 @@
 /*
 - Fecha: 1 de septiembre 2023
-- Hora: 8:30 am
+- Hora: 8:30 pm
 - Versión del código: 1.3
 - Presentado por: Adrián Fernando Gaitán Londoño Ing(c)
 - Presentado a: Doctor, Ricardo Moreno Laverde
@@ -15,6 +15,7 @@
 - los términos anteriores multiplicados por los números naturales consecutivos.
 - Entrada: Un número entero n que representa la cantidad de términos que se desean imprimir.
 - Salida: Los primeros n términos de la serie de Bell.
+- Restricciones: El número de términos debe ser mayor o igual a 0.
 */
 
 // Librerías
@@ -73,9 +74,14 @@ void imprimirNumeroBell(int n){
 
 int main()
 {
+    //Declaración e inicialización de variables
     int n = 0; // Esta variable almacena el número de términos que se desean imprimir.
+
+    //Mensaje de bienvenida
     printf("Este programa va imprimir los términos que le solicites de la serie de Bell: \nEsta serie cuenta el número de particiones no vacías de un conjunto de n elementos. \nComienza con los números 1, 1 y los siguientes términos se calculan como la suma de \nlos términos anteriores multiplicados por los números naturales consecutivos.\nIngrese a continuación el número de términos deseados:\n");
     scanf("%d", &n);
+
+    //Impresión de terminos deseados
     printf("Los primeros %d términos de la serie de Bell son: ", n);
     imprimirNumeroBell(n);
     return 0;

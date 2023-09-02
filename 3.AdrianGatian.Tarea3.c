@@ -25,11 +25,13 @@ Prototipo de la función lucas:
 - numeroTerminos, establece el límite de iteraciones, contador lleva la cuenta de los terminos de la serie hasta el rango dado.
 - Descripción: La función imprime en pantalla los primeros 10 terminos de la serie de Lucas.
 */
+
 int lucas (int primerValor, int segundoValor, int contador, int numeroTerminos) {
-    if (contador > numeroTerminos) {
+    if (contador == numeroTerminos) {
+        printf("%i. ", primerValor);
         return 0;
     }
-    printf(",%i ", primerValor);
+    printf("%i, ", primerValor);
     lucas(segundoValor, (segundoValor + primerValor), (contador + 1), numeroTerminos);
     return 0;
 }

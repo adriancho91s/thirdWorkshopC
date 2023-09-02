@@ -1,5 +1,5 @@
 /*
-- Fecha: 30 de agosto 2023
+- Fecha: 29 de agosto 2023
 - Hora: 9:00 am
 - Versión del código: 1.1
 - Presentado por: Adrián Fernando Gaitán Londoño Ing(c)
@@ -9,35 +9,39 @@
 - Compilador: Apple clang version 14.0.0 (clang-1400.0.28.1)
 - Universidad Tecnológica de Pereira
 - Programa de Ingeniería de Sistemas y Computación
+- Este programa imprime en pantala la serie d narayana hasta el enésimo término.
+- Entrada: Un número entero n que representa el enésimo término de la serie de Narayana.
+- Salida: El enésimo término de la serie de Narayana.
+- Restricciones: El número de términos debe ser mayor o igual a 0.
 */
 
 //Librerías
 #include<stdio.h>
 
-
+// Funciones
 int narayana(int enesimo) {
     return (enesimo == 0) ? 1 :
            (enesimo == 1) ? 1 :
            (enesimo == 2) ? 1 :
            narayana(enesimo - 1) + narayana(enesimo - 3);
-}
+}//Función recursiva que calcula el enésimo término de la serie de Narayana.
 
-int imprimirNarayana(int terminoInicial, int cantidadTerminos) {
-    if (terminoInicial >= (cantidadTerminos - 1)) {
-        printf("%i.\n", narayana(terminoInicial));
-        return 0;
-    }
-    printf("%i, ", narayana(terminoInicial));
-    imprimirNarayana(terminoInicial + 1, cantidadTerminos);
-    return 0;
+void imprimirNarayana(int enesimo){
+    enesimo == 0 ? printf("%d", narayana(enesimo)) : (imprimirNarayana(enesimo - 1), printf(", %d", narayana(enesimo)));
+    // Esta función imprime los números de Narayana de 0 a n.
 }
 
 int main() {
+    //Declaración e inicialización de variables
     int cantidadTerminos = 0;
-    printf("Este programa imprime en pantalla los primeros n terminos de la serie de Narayana.\n");
-    printf("Ingrese la cantidad de términos de la serie de Padovan que desea ver: ");
+
+    //Mensaje de bienvenida y solicitud de datos
+    printf("Este programa imprime en pantalla los primeros n terminos de la secuencia de Narayana.\nEsta serie comienza con los números 1, 1 y 1. Los siguientes términos\nse calculan como la suma del término anterior y el número de parejas\nde términos consecutivos anteriores que son diferentes.\n");
+    printf("Ingrese la cantidad de términos de la secuencia de Narayana que deseas que se impriman: ");
     scanf("%i", &cantidadTerminos);
-    printf("\nLa cantidad %i de términos de la serie de Padovan son: ", cantidadTerminos);
-    imprimirNarayana(0, cantidadTerminos);
+
+    //Impresión de terminos deseados
+    printf("\n\nLa cantidad %i de términos de la serie de Narayana son: ", cantidadTerminos);
+    imprimirNarayana(cantidadTerminos - 1);//Se resta 1 porque el primer término es 0.
     return 0;
 }
