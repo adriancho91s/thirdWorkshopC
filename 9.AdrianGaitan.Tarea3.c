@@ -33,15 +33,17 @@ void imprimirNumeroBell(int n);            // Esta función imprime los números
     {
         2 // n - 1
         0 // k
-    }//Combinatoria == 2!/0!(2-0)!= 1 * b(0)= 1 * 1 = 1
+    }//Combinatoria == 2!/0!(2-0)!= 1 * b(0)= 1 * 1(este es el bell de k=0) = 1
     {
         2
         1
-    }//Combinatoria == 2!/1!(2-1)!= 2 * b(1)= 2 * 1 = 2
+    }//Combinatoria == 2!/1!(2-1)!= 2 * b(1)= 2 * 1(este es el bell de k=1) = 2
     {
         2
         2
-    }//Combinatoria == 2!/2!(2-2)!= 1 * b(2)= 1 * 2 = 2
+    }//Combinatoria == 2!/2!(2-2)!= 1 * b(2)= 1 * 2(este es el bell de k=2) = 2
+
+    B(3)= 1 + 2 + 2 = 5
 }
 */
 
