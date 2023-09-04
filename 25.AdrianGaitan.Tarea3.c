@@ -32,7 +32,7 @@ int printChar(char caracter, int cantidad) {
 int printFigureDown(int spaces, int letters){
     if ((spaces < 10) && (spaces >= 6)) {
         printChar(' ', spaces);
-        printChar('A', letters);
+        printChar('Z', letters);
         printChar('\n', 1);
         system("sleep 0.25");
         return printFigureDown(spaces + 1, letters - 2);
@@ -43,7 +43,7 @@ int printFigureDown(int spaces, int letters){
 int printFigureUp(int spaces, int letters) {
     if (! (spaces <= 6) ) {
         printChar(' ', spaces);
-        printChar('A', letters);
+        printChar('Z', letters);
         printChar('\n', 1);
         system("sleep 0.05");
         return printFigureUp(spaces - 1, letters + 2);
