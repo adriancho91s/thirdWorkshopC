@@ -39,7 +39,7 @@ int lucas (int primerValor, int segundoValor, int contador, int numeroTerminos) 
 //Función Principal
 int main () {
     //Declaración e inicialización de variables
-    int numeroTerminos = 0;
+    int numeroTerminos = 0;//Cantidad de terminos deseados
 
     //Entrada de datos
     printf("Este programa imprime en pantalla el número de terminos deseados de la serie de Lucas.\n");
